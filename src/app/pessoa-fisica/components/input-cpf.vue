@@ -1,11 +1,12 @@
 <template lang="pug">
-    v-text-field(
-      v-model="cpf"
-      label="C.P.F."
-      mask="###.###.###-##"
-      required
-      :rules="rules"
-    )
+    .input-cpf
+      v-text-field(
+        v-model="cpf"
+        label="C.P.F."
+        mask="###.###.###-##"
+        required
+        :rules="rules"
+      )
 </template>
 
 <script>

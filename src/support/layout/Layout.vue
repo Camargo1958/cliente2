@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     setDrawer() {
-      this.drawer = !this.drawer; 
+      this.drawer = !this.drawer;
     },
   },
 };
