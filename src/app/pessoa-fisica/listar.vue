@@ -27,6 +27,7 @@
               small
               dark
               color="blue"
+              @click.stop="edit(props.item.id)"
             )
               v-icon edit
 </template>
@@ -65,6 +66,10 @@ export default {
           text: 'Email',
           value: 'email',
         },
+        {
+          text: 'Ações',
+          align: 'center',
+        },
       ],
       payload: [],
       rowsPerPageItems: [
@@ -73,12 +78,15 @@ export default {
     };
   },
   methods: {
-    vaiParaCriacao() {
+    create() {
       this.$router.push({ name: 'PessoaFisicaCriar' });
+    },
+    edit(id) {
+      this.$router.push({ name: 'PessoaFisicaEditar', params: { id } });
     },
   },
   created() {
-    FisicaService.get()
+    FisicaService.list()
       .then(({ data }) => {
         this.payload = data;
       });
