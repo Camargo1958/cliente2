@@ -3,7 +3,7 @@
       v-text-field(
         v-model="cnpj"
         label="C.N.P.J."
-        mask="###.###.###-##"
+        mask="##.###.###/####-##"
         required
         :rules="rules"
       )
@@ -21,7 +21,7 @@ export default {
     return {
       rules: [
         v => !!v || 'CNPJ é obrigatório',
-        v => !(v && v.length < 11) || 'CNPJ incompleto',
+        v => !(v && v.length < 13) || 'CNPJ incompleto',
       ],
     };
   },
