@@ -21,12 +21,12 @@ export default {
     return {
       rules: [
         v => !!v || 'CNPJ é obrigatório',
-        v => !(v && v.length < 13) || 'CNPJ incompleto',
+        v => !(v && v.length < 14) || 'CNPJ incompleto',
       ],
     };
   },
   computed: {
-    cpf: {
+    cnpj: {
       get() {
         return this.value;
       },

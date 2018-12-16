@@ -5,6 +5,7 @@ import PessoaFisicaCriar from '@/app/pessoa-fisica/criar.vue';
 import PessoaFisicaEditar from '@/app/pessoa-fisica/editar.vue';
 import PessoaJuridicaListar from '@/app/pessoa-juridica/listar.vue';
 import PessoaJuridicaEditar from '@/app/pessoa-juridica/editar.vue';
+import PessoaJuridicaCriar from '@/app/pessoa-juridica/criar.vue';
 
 Vue.use(Router);
 
@@ -50,6 +51,14 @@ const route = new Router({
       name: 'PessoaJuridicaEditar',
       meta: {
         title: 'Editar pessoa juridica',
+      },
+    },
+    {
+      path: '/empresa/criar',
+      component: PessoaJuridicaCriar,
+      name: 'PessoaJuridicaCriar',
+      meta: {
+        title: 'Criar pessoa juridica',
       },
     },
   ],
