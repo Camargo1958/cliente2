@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-layout.pf-listar(row wrap)
+  v-layout.pj-listar(row wrap)
     v-flex(xs12)
       v-btn(
         type="button"
@@ -16,11 +16,11 @@
         :rows-per-page-items="rowsPerPageItems"
       )
         template(slot="items" slot-scope="props")
-          td {{ props.item.nome }}
-          td {{ props.item.sobrenome }}
-          td {{ props.item.dataNascimento | date }}
-          td {{ props.item.cpf | cpf }}
-          td {{ props.item.email }}
+          td {{ props.item.nomeFantasia }}
+          td {{ props.item.razaoSocial }}
+          td {{ props.item.dataFundacao | date }}
+          td {{ props.item.cnpj | cnpj }}
+          td {{ props.item.emailContato }}
           td.text-xs-center
             v-btn(
               fab
@@ -33,38 +33,38 @@
 </template>
 
 <script>
-import FisicaService from '@/domains/pessoa/fisica/fisica-service';
-import cpfFilter from '@/support/filters/cpf';
+import JuridicaService from '@/domains/pessoa/juridica/juridica-service';
+import cnpjFilter from '@/support/filters/cnpj';
 import dateFilter from '@/support/filters/date';
 
 export default {
-  name: 'PessoaFisicaListar',
+  name: 'PessoaJuridicaListar',
   filters: {
     dateFilter,
-    cpfFilter,
+    cnpjFilter,
   },
   data() {
     return {
       headers: [
         {
-          text: 'Nome',
-          value: 'nome',
+          text: 'Nome fantasia',
+          value: 'nomeFantasia',
         },
         {
-          text: 'Sobrenome',
-          value: 'sobrenome',
+          text: 'Razão social',
+          value: 'razaoSocial',
         },
         {
-          text: 'Data de Nascimento',
-          value: 'dataNascimento',
+          text: 'Data de Fundação',
+          value: 'dataFundacao',
         },
         {
-          text: 'C.P.F.',
-          value: 'cpf',
+          text: 'CNPJ',
+          value: 'cnpj',
         },
         {
-          text: 'Email',
-          value: 'email',
+          text: 'Email contato',
+          value: 'emailContato',
         },
         {
           text: 'Ações',
@@ -79,14 +79,14 @@ export default {
   },
   methods: {
     create() {
-      this.$router.push({ name: 'PessoaFisicaCriar' });
+      this.$router.push({ name: 'PessoaJuridicaCriar' });
     },
     edit(id) {
-      this.$router.push({ name: 'PessoaFisicaEditar', params: { id } });
+      this.$router.push({ name: 'PessoaJuridicaEditar', params: { id } });
     },
   },
   created() {
-    FisicaService.list()
+    JuridicaService.list()
       .then(({ data }) => {
         this.payload = data;
       });
