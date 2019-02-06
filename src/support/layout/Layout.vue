@@ -19,10 +19,9 @@
           <v-list-tile
             v-for="item in items"
             :key="item.title"
-            @click=""
           >
             <v-list-tile-action>
-              <v-icon>{{ item.icon }}</v-icon>
+              <v-icon v-on:click="item.click">{{ item.icon }}</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>{{ item.title }}</v-list-tile-title>
@@ -39,15 +38,22 @@ export default {
     return {
       drawer: false,
       items: [
-        { title: 'Dashboard', icon: 'dashboard' },
-        { title: 'Account', icon: 'account_box' },
-        { title: 'Admin', icon: 'gavel' },
+        { title: 'Empresas', icon: 'business', click: 'listpj()' },
+        { title: 'Pessoas', icon: 'account_box', click: 'listpf' },
+        { title: 'Admin', icon: 'gavel', click: '' },
+        { title: 'Sair', icon: 'exit_to_app', click: '' },
       ],
     };
   },
   methods: {
     setDrawer() {
       this.drawer = !this.drawer;
+    },
+    listpj() {
+      this.$router.push({ name: 'PessoaJuridicaListar' });
+    },
+    listpf() {
+      this.$router.push({ name: 'PessoaFisicaListar' });
     },
   },
 };
